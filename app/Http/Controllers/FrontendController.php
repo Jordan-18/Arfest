@@ -10,17 +10,4 @@ class FrontendController extends Controller
     {
         return view('contents.dashboard');
     }
-
-    public function register(Request $request)
-    {
-        return view('pages.register');
-    }
-    public function login(Request $request)
-    {
-        return view('pages.login');
-    }
-    public function forget(Request $request)
-    {
-        return view('pages.forget');
-    }
 }

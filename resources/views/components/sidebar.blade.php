@@ -13,16 +13,16 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->is('/') ? 'active' : ''}}">
                 <a class="nav-link" href="{{ route('index')}}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
-
+            @auth                
             <!-- Nav Item - Point -->
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->is('point') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('point')}}">
                     <i class="fas fa-sun"></i>
                     <span>Point</span></a>
@@ -31,11 +31,12 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Point -->
-            <li class="nav-item active">
+            <li class="nav-item {{ request()->is('event') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('event')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Event</span></a>
             </li>
+            @endauth
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 

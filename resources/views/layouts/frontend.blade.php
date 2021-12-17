@@ -69,12 +69,16 @@
                 </div>
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="{{route('login')}}">Logout</a>
+                    <form action="/logout" method="post">
+                        @csrf
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary" >Logout</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Modal add-point-->
     <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -123,7 +127,7 @@
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Masukkan jarak</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Jarak Kamu dengan Target</h5>
             <button type="button" class="btn btn-outline-danger text-reset" data-dismiss="modal" aria-label="Close">&#10060;</button>
             </div>
             <div class="modal-body">
@@ -137,12 +141,12 @@
     <!-- /Modal add-jarak-->
 
 
-    <!-- Modal add-JumlahAP-->
-    <div class="modal fade" id="JumlahAP" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- Modal add-Jenis-->
+    <div class="modal fade" id="jenis" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Masukkan Jumlah Anak Panah</h5>
+            <h5 class="modal-title" id="staticBackdropLabel">Jenis Busur</h5>
             <button type="button" class="btn btn-outline-danger text-reset" data-dismiss="modal" aria-label="Close">&#10060;</button>
             </div>
             <div class="modal-body">
@@ -153,7 +157,7 @@
             </div>
         </div>
         </div>
-    <!-- /Modal add-JumlahAP-->
+    <!-- /Modal add-jenis-->
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{url('/temp/vendor/jquery/jquery.min.js')}}"></script>
