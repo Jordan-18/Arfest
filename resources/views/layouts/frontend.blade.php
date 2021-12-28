@@ -17,10 +17,16 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+    {{-- css --}}
+    <link href="{{ url('/temp/css/style.css')}}" rel="stylesheet">
+    
     <!-- Custom styles for this template-->
     <link href="{{ url('/temp/css/sb-admin-2.min.css')}}" rel="stylesheet">
-
     <link rel="icon" href="{{url('/temp/img/logo.jpg')}}">
+
+    
+    {{-- highcharts --}}
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 
 </head>
 
@@ -78,87 +84,6 @@
             </div>
         </div>
     </div>
-
-
-    <!-- Modal add-point-->
-    <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Masukkan Point</h5>
-            <button type="button" class="btn btn-outline-danger text-reset" data-dismiss="modal" aria-label="Close">&#10060;</button>
-            </div>
-            <div class="modal-body">
-            
-            <form action="" method="POST">
-                {{-- score --}}
-                <div class="mb-3">
-                    <input type="submit" class="btn btn-outline-secondary " value="1">
-                    <input type="submit" class="btn btn-outline-secondary " value="2">
-                    <input type="submit" class="btn btn-dark " value="3">
-                    <input type="submit" class="btn btn-dark " value="4">
-                    <input type="submit" class="btn btn-primary " value="5">
-                    <input type="submit" class="btn btn-primary " value="6">
-                    <input type="submit" class="btn btn-danger " value="7">
-                    <input type="submit" class="btn btn-danger " value="8">
-                    <input type="submit" class="btn btn-warning " value="9">
-                    <input type="submit" class="btn btn-warning " value="10">
-                    <input type="submit" class="btn btn-warning " value="10*">
-                </div>
-                {{-- score --}}
-            </form>
-            {{-- text area --}}
-            <textarea name="sum-score" id="sum-score" class="col-lg" rows="10" disabled></textarea>
-            {{-- sum count --}}
-            <input type="text" name="total" class="col-lg-3" disabled>
-            {{-- button --}}
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-3">
-                <button class="btn btn-success me-md-2" type="button">Add</button>
-              </div>
-            </div>
-            </div>
-        </div>
-        </div>
-    <!-- /Modal add-point-->
-
-
-    <!-- Modal add-jarak-->
-    <div class="modal fade" id="jarak" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Jarak Kamu dengan Target</h5>
-            <button type="button" class="btn btn-outline-danger text-reset" data-dismiss="modal" aria-label="Close">&#10060;</button>
-            </div>
-            <div class="modal-body">
-                {{-- code here --}}
-
-                {{-- end code --}}
-            </div>
-            </div>
-        </div>
-        </div>
-    <!-- /Modal add-jarak-->
-
-
-    <!-- Modal add-Jenis-->
-    <div class="modal fade" id="jenis" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">Jenis Busur</h5>
-            <button type="button" class="btn btn-outline-danger text-reset" data-dismiss="modal" aria-label="Close">&#10060;</button>
-            </div>
-            <div class="modal-body">
-                {{-- code here --}}
-                
-                {{-- end code --}}
-            </div>
-            </div>
-        </div>
-        </div>
-    <!-- /Modal add-jenis-->
-
     <!-- Bootstrap core JavaScript-->
     <script src="{{url('/temp/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url('/temp/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
@@ -175,7 +100,8 @@
     <!-- Page level custom scripts -->
     <script src="{{url('/temp/js/demo/chart-area-demo.js')}}"></script>
     <script src="{{url('/temp/js/demo/chart-pie-demo.js')}}"></script>
-
+    
+    <script src="{{url('/temp/js/calc-point.js')}}"></script>
 </body>
 
 </html>

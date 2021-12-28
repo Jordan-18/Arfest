@@ -1,0 +1,14 @@
+.button
+{
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+.but
+{
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 15px;
+}

@@ -18,8 +18,6 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
             @auth                
             <!-- Nav Item - Point -->
             <li class="nav-item {{ request()->is('point') ? 'active' : ''}}">
@@ -27,8 +25,6 @@
                     <i class="fas fa-sun"></i>
                     <span>Point</span></a>
             </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Point -->
             <li class="nav-item {{ request()->is('event') ? 'active' : ''}}">
