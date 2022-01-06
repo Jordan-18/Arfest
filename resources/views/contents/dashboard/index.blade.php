@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title','UAC UNIDA')
+@section('title','Archery UNIDA')
 
 @section('content')
     <!-- Begin Page Content -->

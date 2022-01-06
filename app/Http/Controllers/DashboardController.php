@@ -14,6 +14,6 @@ class DashboardController extends Controller
         // ->whereYear("created_at", date('Y'))
         ->groupBy(DB::raw("Month(created_at)"))
         ->pluck('count');
-        return view('contents.dashboard', compact('users'));
+        return view('contents.dashboard.index', compact('users'));
     }
 }

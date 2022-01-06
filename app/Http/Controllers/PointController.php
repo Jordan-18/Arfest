@@ -10,7 +10,7 @@ class PointController extends Controller
     public function index(Request $request)
     {
         $date = date('Y-m-d H:i:s');    
-        return view('contents.point', compact('date'));
+        return view('contents.point.index', compact('date'));
     }
 
 }

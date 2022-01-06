@@ -1,6 +1,6 @@
 @extends('layouts.frontend')
 
-@section('title','SKORING')
+@section('title','Scoring')
 
 @section('content')
     <!-- Begin Page Content -->
