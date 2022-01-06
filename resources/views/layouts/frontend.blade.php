@@ -96,11 +96,8 @@
 
     <!-- Page level plugins -->
     <script src="{{url('/temp/vendor/chart.js/Chart.min.js')}}"></script>
-
-    <!-- Page level custom scripts -->
-    <script src="{{url('/temp/js/demo/chart-area-demo.js')}}"></script>
-    <script src="{{url('/temp/js/demo/chart-pie-demo.js')}}"></script>
     
+    <script src="{{url('/temp/js/main.js')}}"></script>
     <script src="{{url('/temp/js/calc-point.js')}}"></script>
 </body>
 

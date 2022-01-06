@@ -1,13 +1,11 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
-use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\RegisterController;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +24,7 @@ Route::get('/login/forget', [LoginController::class, 'forget'])->name('forget-pa
 Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 
 // frontend
-Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('/', [DashboardController::class, 'index'])->name('index');
 
 // Dashboard
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){

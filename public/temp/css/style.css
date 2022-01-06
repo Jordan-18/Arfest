@@ -12,3 +12,26 @@
     width: 80px;
     border-radius: 15px;
 }
+.jarak
+{
+    align-items: center;
+    height: 80px;
+    width: 80px;
+    border-radius: 10px;
+}
+.busur 
+{
+    height: 300px;
+    width: 200px;
+    transition: 1s;
+}
+
+/* ukuran HP */
+@media screen and ( max-width: 500px ){
+    .busur 
+    {
+        height: 150px;
+        width: 100px;
+        transition: 1s;
+    }
+}
