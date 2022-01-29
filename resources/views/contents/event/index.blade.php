@@ -17,16 +17,23 @@
                 <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
             </div>
             <div class="card">
-                <img src="{{url('/temp/img/undraw_profile_2.svg')}}" class="card-img-top m-auto" style="height: 300px; width: 300px">
                 <div class="card-body">
-                    <h5 class="card-title">{{$event->Nama}}</h5>
-                    <p class="card-text">{{$event->Desk}}</p>
+                    <img src="{{ Storage::url($event->url)}}" class="card-img-top m-auto" style="height: 300px;">
+                    <h5 class="card-title mt-3">{{$event->name}}</h5>
                 </div>
             </div>
         </div>
     </div>
     @endforeach
-      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+    {{ $events->links() }}
+    </div>
     </div>
     <!-- /.container-fluid -->
+    <script>
+        setTimeout(() => {
+            $('#deleted').slideUp('fast');
+        }, 1500);
+    </script>
 @endsection

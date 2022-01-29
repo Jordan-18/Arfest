@@ -1,37 +1,51 @@
-.button
-{
+.button {
     align-items: center;
     height: 80px;
     width: 80px;
     border-radius: 10px;
 }
-.but
-{
+
+.but {
     align-items: center;
     height: 80px;
     width: 80px;
     border-radius: 15px;
 }
-.jarak
-{
+
+.jarak {
     align-items: center;
     height: 80px;
     width: 80px;
     border-radius: 10px;
 }
-.busur 
-{
+
+.busur {
     height: 300px;
     width: 200px;
     transition: 1s;
 }
 
+#search {
+    border-radius: 10px 0px 0px 10px;
+}
+
+#btn-search {
+    border-radius: 0px 10px 10px 0px;
+}
+
 /* ukuran HP */
-@media screen and ( max-width: 500px ){
-    .busur 
-    {
+@media screen and (max-width: 500px) {
+    .busur {
         height: 150px;
         width: 100px;
         transition: 1s;
     }
+}
+
+th {
+    text-align: center !important;
+}
+
+td {
+    text-align: center;
 }

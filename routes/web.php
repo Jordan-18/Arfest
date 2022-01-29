@@ -5,6 +5,7 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,10 +27,25 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 // frontend
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 
-// Dashboard
+// Dashboard->auth
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/point', [PointController::class, 'index'])->name('point');
     Route::get('/event', [EventController::class, 'index'])->name('event');
+});
+
+// hak Admin
+Route::middleware(['auth:sanctum', 'verified','admin'])->group(function (){
+    // admin user
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::delete('/user/{id}',[UserController::class,'destroy'])->name('destroy');
+    Route::get('/user/edit/{id}',[UserController::class, 'edit'])->name('edit-user');
+    Route::put('/edit/{id}',[UserController::class, 'update'])->name('update-user');
+    
+    // admin event
+    Route::get('/events',[EventController::class, 'events'])->name('events');
+    Route::delete('/event/{id}',[EventController::class,'destroy'])->name('destroy');
+    Route::get('/event/edit/{id}',[EventController::class, 'edit'])->name('event-edit');
+    Route::put('/edit/{id}',[EventController::class, 'update'])->name('event-update');
 });
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');

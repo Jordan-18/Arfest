@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class competition extends Model
+class Event extends Model
 {
     use HasFactory;
 
@@ -15,7 +15,8 @@ class competition extends Model
         'id_point',
         'Nama',
         'url',
-        'Desk'
+        'Desk',
+        'status'
     ];
 
     public function PointCompetition()
