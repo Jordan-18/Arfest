@@ -73,7 +73,7 @@
                             </button>
                             <a href="{{route('event-edit', $event->id)}}" class="btn btn-secondary btn-circle">
                                 <i class="fas fa-edit"></i>
-                              </a>
+                            </a>
                           </form>
                     </td>
                 </tr>

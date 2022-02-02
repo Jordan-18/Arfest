@@ -2,15 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
-use Illuminate\Http\Request;
+use App\Models\Point;
 
 class PointController extends Controller
 {
-    public function index(Request $request)
+    public function index()
+    {
+        $points = Point::all();
+        return view('contents.point.index', [
+            "points" => $points
+        ]);
+    }
+
+    public function create()
     {
         $date = date('Y-m-d H:i:s');    
-        return view('contents.point.index', compact('date'));
+        return view('contents.point.create', compact('date'));
     }
 
 }

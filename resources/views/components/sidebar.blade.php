@@ -37,7 +37,7 @@
             </li>
             @endif                
             <!-- Nav Item - Point -->
-            <li class="nav-item {{ request()->is('point') ? 'active' : ''}}">
+            <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('point')}}">
                     <i class="fas fa-sun"></i>
                     <span>Point</span></a>
