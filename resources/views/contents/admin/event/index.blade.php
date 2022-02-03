@@ -18,15 +18,15 @@
     @endif
     
     {{-- alert-errors --}}
-        @if ($errors->any() or session()->has('error'))
-        <div class="alert alert-danger" role="alert" id="error">
-            @if (session()->has('error'))    
-                {{ session('error') }}
+    @if ($errors->any() or session()->has('deleted'))
+        <div class="alert alert-danger" role="alert" id="deleted">
+            @if (session()->has('deleted'))    
+                {{ session('deleted') }}
             @else
                 Data Kirim Tidak Sesuai.
             @endif
         </div>
-        @endif
+    @endif
     <!-- Start Table -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -65,7 +65,7 @@
                     <td>{{ $event->created_at->diffForHumans() }}</td>
                     <td>{{ $event->status }}</td>
                     <td>
-                        <form action="{{route('destroy', $event->id)}}" method="POST">
+                        <form action="{{route('destroy-event', $event->id)}}" method="POST">
                             {{ csrf_field() }}
                             {{ method_field('DELETE') }}
                             <button href="#" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">

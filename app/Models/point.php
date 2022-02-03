@@ -9,7 +9,8 @@ class Point extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
+    protected $fillable = 
+    [
         'user_id',
         'jarak',
         'jenis_busur',

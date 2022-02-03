@@ -8,8 +8,6 @@
       <!-- Page Heading -->
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Create Score</h1>
-          <button href="#" class="btn btn-sm btn-success shadow-sm" type="button">
-              &#10010; Add New</button>
       </div>
               <!-- Start Table -->
               <div class="card shadow mb-4">
@@ -21,7 +19,7 @@
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         </div>
                           {{-- start --}}
-                          <table class="table table-bordered text-center">
+                          <table class="table table-bordered text-center" id="countit">
                             <thead>
                               <tr>
                                 <th>NAMA</th>
@@ -33,22 +31,63 @@
                               <tr>
                                   <th>{{Auth::user()->name}}</th>
                                   <th>
-                                    <a id="jarak-tembak" type="submit" data-toggle="modal" data-target="#jarak">
-                                        &#10010; Add</a>
+                                    <a id="jarak-tembak" data-toggle="modal" data-target="#jarak">
+                                       &#10010; Add</a>
                                   </th>
                                   <th id="date">{{($date)}}</th>
                                   <th>
                                     <a id="jenis-busur" type="submit" data-toggle="modal" data-target="#jenis">
                                         &#10010; Add</a>
                                   </th>
-                                  <th></th>
+                                  <th>{{$rambahan}}</th>
                               </tr>
                             </thead>
                             <tbody class="table table-bordered text-center" id="mytable">
-                              
+                              @for ($i = 0; $i < $rambahan; $i++)
+                                  
+                              <tr>
+                                <th>{{$i}}</th>
+                                <td id="input{{$i}}">
+                                  0
+                                  <input type="text" id=inputset value="{{$i}}" hidden>
+                                </td>
+                                <td id="rambahan{{$i}}" class="rambahancount">
+                                  <input type="text" id=pointset value="{{$i}}" hidden>
+                                </td>
+                                <td>
+                                  Max Point
+                                  <span style="font-weight: bold">{{$jumlahAP*10}}</span>
+                                </td>
+                                <td>
+                                  <a class="btn btn-primary" id="set{{$i}}" data-toggle="modal" data-target="#staticBackdrop">Set Point</a>
+                                </td>
+                              </tr>
+                              @endfor
+                              <tr>
+                                <td colspan="4">Total</td>
+                                <td id="total"></td>
+                              </tr>
                             </tbody>
                           </table>
+                          <button onclick="count()">Count</button>
                           {{-- end --}}
+                          <form action="">
+                            <div>
+                              <label class="form-label">rambahan</label>
+                              <input type="text" name="rambahan" id="form-rambahan" class="form-control" value="{{$rambahan}}">
+                              <label class="form-label">Jumlah Ap</label>
+                              <input type="text" name="jumlah-ap" id="form-jumlah-AP" class="form-control" value="{{$jumlahAP}}">
+                              <label class="form-label">Jarak</label>
+                              <input type="text" name="jarak" id="form-jarak" class="form-control">
+                              <label class="form-label">Jenis</label>
+                              <input type="text" name="jenis" id="form-jenis" class="form-control">
+                              <label class="form-label">total</label>
+                              <input type="text" name="form-total" id="form-total" class="form-control">
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                              <button class="btn btn-success" type="submit">Submit</button>
+                            </div>
+                          </form>
                       </div> 
                 </div>
             </div>
@@ -65,10 +104,10 @@
             {{-- start code --}}
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" id="display" class="form-control form-control-user" placeholder="Counting">
+                  <input type="text" id="display" class="form-control form-control-user" placeholder="Counting" maxlength="3">
               </div>
               <div class="col-sm-6">
-                  <input type="text" id="result" class="form-control form-control-user" placeholder="Result">
+                  <input type="number" id="result" class="form-control form-control-user" placeholder="Result">
               </div>
             </div>
               <table class="m-auto">

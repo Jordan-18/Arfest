@@ -1,5 +1,5 @@
 @extends('layouts.frontend')
-@section('title','Edit User')
+@section('title','User Edit')
 
 @section('content')
 <!-- Begin Page Content -->
@@ -8,6 +8,12 @@
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">User &raquo; Edit &raquo; {{ $user->name }}</h1>
     </div>
+    {{-- alert-errors --}}
+    @if ($errors->any())
+        <div class="alert alert-danger" role="alert" id="error">
+            Data Kirim Tidak Sesuai.
+        </div>
+    @endif
     <!-- Start Table -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -18,7 +24,7 @@
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 </div>
                 {{-- start form --}}
-                <form method="POST" action="{{route('update-user',$user->id)}}">
+                <form method="POST" action="{{ route('user-update',$user->id) }}">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -52,4 +58,9 @@
     <div id="container"></div>
     {{-- end table --}}
 </div>
+<script>
+    setTimeout(() => {
+        $('#error').slideUp('fast');
+    }, 1500);
+    </script>
 @endsection

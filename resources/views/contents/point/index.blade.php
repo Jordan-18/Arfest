@@ -55,13 +55,26 @@
             {{-- code here --}}
             <form action="{{ route('create-point')}}">
               <div class="mb-3">
-                <label for="roles" class="form-label">Status</label>
-                <select name="status" id="status" class="form-control">
+                <label for="rambahan" class="form-label">Status</label>
+                <select name="rambahan" id="rambahan" class="form-control">
                   <option selected disabled>Pilih Jumlah Rambahan</option>
                   <option disabled>-------------------------------</option>
-                  <option value="PENDING">PENDING</option>
-                  <option value="REJECT">REJECT</option>
-                  <option value="PUBLISH">PUBLISH</option>
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="12">12</option>
+                  <option value="24">24</option>
+                </select>
+            </div>
+              <div class="mb-3">
+                <label for="jumlah-ap" class="form-label">Status</label>
+                <select name="jumlah-ap" id="jumlah-ap" class="form-control">
+                  <option selected disabled>Pilih Jumlah Anak Panah</option>
+                  <option disabled>-------------------------------</option>
+                  <option value="3">3</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="12">12</option>
                 </select>
             </div>
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">

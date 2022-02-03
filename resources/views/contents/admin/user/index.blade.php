@@ -14,10 +14,14 @@
             {{ session('success') }}
         </div>
         @endif
-        
-        @if (session()->has('deleted'))
-        <div class="alert alert-success" role="alert" id="deleted">
-            {{ session('deleted') }}
+        {{-- alert-errors --}}
+        @if ($errors->any() or session()->has('deleted'))
+        <div class="alert alert-danger" role="alert" id="deleted">
+            @if (session()->has('deleted'))    
+                {{ session('deleted') }}
+            @else
+                Data Kirim Tidak Sesuai.
+            @endif
         </div>
         @endif
         <!-- Start Table -->
@@ -59,10 +63,10 @@
                         <td>{{ $user->created_at->diffForHumans() }}</td>
                         <td>{{ $user->roles }}</td>
                         <td>
-                            <form action="{{route('destroy', $user->id)}}" method="POST">
+                            <form action="{{route('destroy-user', $user->id)}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button href="#" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
+                                <button type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
                                   <i class="fas fa-trash"></i>
                                 </button>
                                 <a href="{{route('edit-user', $user->id)}}" class="btn btn-secondary btn-circle">

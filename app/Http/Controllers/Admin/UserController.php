@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index(Request $request)
+    public function index()
     {
         $users = User::query();
         if(request('search')){
@@ -43,6 +43,7 @@ class UserController extends Controller
         return redirect()->route('user')->with('success','Data Berhasil Diubah');
 
     }
+
     public function destroy($id)
     {
         $user = User::findOrFail($id);

@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\Admin\EventController as AdminEventController;
-use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 use function GuzzleHttp\Promise\queue;
@@ -41,16 +40,16 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
 // hak Admin
 Route::middleware(['auth:sanctum', 'verified','admin'])->group(function (){
     // admin user
-    Route::get('/user', [AdminUserController::class, 'index'])->name('user');
-    Route::delete('/user/{id}',[AdminUserController::class,'destroy'])->name('destroy');
-    Route::get('/user/edit/{id}',[AdminUserController::class, 'edit'])->name('edit-user');
-    Route::put('/edit/{id}',[AdminUserController::class, 'update'])->name('update-user');
+    Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::delete('user/{id}',[UserController::class,'destroy'])->name('destroy-user');
+    Route::get('/user/edit/{id}',[UserController::class, 'edit'])->name('edit-user');
+    Route::put('/edit-user/{id}',[UserController::class, 'update'])->name('user-update');
     
     // admin event
     Route::get('/events',[AdminEventController::class, 'index'])->name('events');
-    Route::delete('/event/{id}',[AdminEventController::class,'destroy'])->name('destroy');
+    Route::delete('/event/{id}',[AdminEventController::class,'destroy'])->name('destroy-event');
     Route::get('/event/edit/{id}',[AdminEventController::class, 'edit'])->name('event-edit');
-    Route::put('/edit/{id}',[AdminEventController::class, 'update'])->name('event-update');
+    Route::put('/edit-event/{id}',[AdminEventController::class, 'update'])->name('event-update');
 });
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
