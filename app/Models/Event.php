@@ -15,7 +15,8 @@ class Event extends Model
         'id_point',
         'Nama',
         'url',
-        'Desk',
+        'desk',
+        'date_execution',
         'status'
     ];
 

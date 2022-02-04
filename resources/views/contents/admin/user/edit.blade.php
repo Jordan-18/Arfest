@@ -37,6 +37,7 @@
                         <option value="{{$user->roles}}">{{$user->roles}}</option>
                         <option disabled>-------------------------------</option>
                         <option value="USER">USER</option>
+                        <option value="PUBLISHER">PUBLISHER</option>
                         <option value="ADMIN">ADMIN</option>
                         </select>
                     </div>

@@ -14,8 +14,8 @@ class Point extends Model
         'user_id',
         'jarak',
         'jenis_busur',
-        'Rambahan',
-        'Jum-AP',
-        'Total'
+        'rambahan',
+        'jumAP',
+        'total'
     ];
 }

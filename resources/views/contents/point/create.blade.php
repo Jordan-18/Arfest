@@ -9,6 +9,12 @@
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Create Score</h1>
       </div>
+        {{-- alert-errors --}}
+        @if ($errors->any())
+        <div class="alert alert-danger" role="alert" id="error">
+          Hasil Input ada yang belum Terisi
+        </div>
+        @endif
               <!-- Start Table -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -49,10 +55,10 @@
                                 <th>{{$i}}</th>
                                 <td id="input{{$i}}">
                                   0
-                                  <input type="text" id=inputset value="{{$i}}" hidden>
+                                  <input type="text" id="inputset" value="{{$i}}" hidden>
                                 </td>
                                 <td id="rambahan{{$i}}" class="rambahancount">
-                                  <input type="text" id=pointset value="{{$i}}" hidden>
+                                  <input type="text" id="pointset" value="{{$i}}" hidden>
                                 </td>
                                 <td>
                                   Max Point
@@ -64,30 +70,16 @@
                               </tr>
                               @endfor
                               <tr>
-                                <td colspan="4">Total</td>
+                                <td colspan="3">Total</td>
+                                <td><button class="btn btn-primary" id="count" onclick="countpoint()">Count</button></td>
                                 <td id="total"></td>
                               </tr>
                             </tbody>
                           </table>
-                          <button onclick="count()">Count</button>
                           {{-- end --}}
-                          <form action="">
-                            <div>
-                              <label class="form-label">rambahan</label>
-                              <input type="text" name="rambahan" id="form-rambahan" class="form-control" value="{{$rambahan}}">
-                              <label class="form-label">Jumlah Ap</label>
-                              <input type="text" name="jumlah-ap" id="form-jumlah-AP" class="form-control" value="{{$jumlahAP}}">
-                              <label class="form-label">Jarak</label>
-                              <input type="text" name="jarak" id="form-jarak" class="form-control">
-                              <label class="form-label">Jenis</label>
-                              <input type="text" name="jenis" id="form-jenis" class="form-control">
-                              <label class="form-label">total</label>
-                              <input type="text" name="form-total" id="form-total" class="form-control">
-                            </div>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
-                              <button class="btn btn-success" type="submit">Submit</button>
+                              <a class="btn btn-success" type="submit" data-toggle="modal" data-target="#point">Submit</a>
                             </div>
-                          </form>
                       </div> 
                 </div>
             </div>
@@ -104,8 +96,11 @@
             {{-- start code --}}
             <div class="form-group row">
               <div class="col-sm-6 mb-3 mb-sm-0">
-                  <input type="text" id="display" class="form-control form-control-user" placeholder="Counting" maxlength="3">
-              </div>
+                <div class="input-group mb-3">
+                  <span class="input-group-text" id="count-point">0</span>
+                  <input type="text" id="display" class="form-control form-control-user" placeholder="Counting">
+                </div>
+                </div>
               <div class="col-sm-6">
                   <input type="number" id="result" class="form-control form-control-user" placeholder="Result">
               </div>
@@ -161,8 +156,11 @@
                   </td>
                 </tr>
               </table>
-            {{-- end code --}}
-          </div>
+              {{-- end code --}}
+            </div>
+            <ul>
+              <li style="color: #ff0000">Max Anak Panah <strong><u>{{$jumlahAP}}</u></strong></li>
+            </ul>
           </div>
       </div>
       </div>
@@ -247,4 +245,42 @@
       </div>
       </div>
   <!-- /Modal add-jenis-->
+
+  <!-- Modal point -->
+  <div class="modal fade" id="point" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+      <div class="modal-content">
+          <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Yakin Ini Score Mu</h5>
+          <button type="button" id="close-modal-busur" class="btn btn-outline-danger text-reset" data-dismiss="modal" aria-label="Close">&#10060;</button>
+          </div>
+          <div class="modal-body">
+              {{-- code here --}}
+                <form action="{{route('store-point')}}" method="POST">
+                  @csrf
+                  <label class="form-label">Rambahan</label>
+                  <input type="text" name="rambahan" id="form-rambahan" class="form-control" value="{{$rambahan}}" required>
+                  <label class="form-label">Jumlah Anak Panah</label>
+                  <input type="text" name="jumlah-ap" id="form-jumlah-AP" class="form-control" value="{{$jumlahAP}}" required>
+                  <label class="form-label">Jarak</label>
+                  <input type="text" name="jarak" id="form-jarak" class="form-control" value="{{ old('jarak')}}">
+                  <label class="form-label">Jenis</label>
+                  <input type="text" name="jenis" id="form-jenis" class="form-control" value="{{ old('jenis')}}">
+                  <label class="form-label">Total</label>
+                  <input type="text" name="form-total" id="form-total" class="form-control" value="{{ old('form-total')}}">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-2">
+                  <button class="btn btn-success" type="submit">Submit</button>
+                </div>
+              </form>
+              {{-- end code --}}
+          </div>
+          </div>
+      </div>
+      </div>
+  <!-- Modal point-->
+  <script>
+      setTimeout(() => {
+          $('#error').slideUp('fast');
+      }, 2000);
+    </script>
 @endsection

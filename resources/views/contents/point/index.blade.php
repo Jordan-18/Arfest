@@ -11,7 +11,11 @@
           <button href="#" class="btn btn-sm btn-success shadow-sm" type="submit" data-target="#create" data-toggle="modal">
               &#10010; Add New</button>
       </div>
-
+      @if (session()->has('success'))
+      <div class="alert alert-success" role="alert" id="success">
+          {{ session('success') }}
+      </div>
+      @endif
       <div class="row row-cols-1 row-cols-md-4 g-4 m-auto">
         @foreach ($points as $point)
         <div class="col mb-2">
@@ -29,7 +33,20 @@
                 </tr>
                 <tr>
                   <th>Total</th>
-                  <td>{{ $point->Total }}</td>
+                  <td>{{ $point->total.'/'.($point->jumAP*10)*$point->rambahan }}</td>
+                </tr>
+                <tr>
+                  <th>Presentase</th>
+                  @php
+                      $presentase = ($point->total/( ($point->jumAP*10) *$point->rambahan )) * 100
+                  @endphp
+                  @if ( $presentase >= 75 )
+                    <td style="color: #2bff00">{{ round($presentase,2).'%' }}</td>
+                  @elseif ($presentase > 40)
+                    <td style="color: #ff9800">{{ round($presentase,2).'%' }}</td>
+                  @else
+                    <td style="color: #ff0000">{{ round($presentase,2).'%' }}</td>
+                  @endif
                 </tr>
               </table>
 
@@ -41,7 +58,10 @@
           </div>
         </div>
         @endforeach
-      </div>
+      </div>      
+    </div>
+    <div class="d-flex justify-content-center">
+      {{ $points->links() }}
     </div>
   <!-- Modal add -->
   <div class="modal fade" id="create" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -55,21 +75,20 @@
             {{-- code here --}}
             <form action="{{ route('create-point')}}">
               <div class="mb-3">
-                <label for="rambahan" class="form-label">Status</label>
-                <select name="rambahan" id="rambahan" class="form-control">
-                  <option selected disabled>Pilih Jumlah Rambahan</option>
+                <label for="rambahan" class="form-label">Jumlah Rambahan</label>
+                <select name="rambahan" id="rambahan" class="form-control" required>
+                  <option value="1" selected>Pilih Jumlah Rambahan</option>
                   <option disabled>-------------------------------</option>
                   <option value="3">3</option>
                   <option value="5">5</option>
                   <option value="6">6</option>
                   <option value="12">12</option>
-                  <option value="24">24</option>
                 </select>
             </div>
               <div class="mb-3">
-                <label for="jumlah-ap" class="form-label">Status</label>
-                <select name="jumlah-ap" id="jumlah-ap" class="form-control">
-                  <option selected disabled>Pilih Jumlah Anak Panah</option>
+                <label for="jumlahAP" class="form-label">Jumlah Anak Panah</label>
+                <select name="jumlahAP" id="jumlah-ap" class="form-control" required>
+                  <option value="1" selected>Pilih Jumlah Anak Panah</option>
                   <option disabled>-------------------------------</option>
                   <option value="3">3</option>
                   <option value="5">5</option>
@@ -87,4 +106,10 @@
     </div>
     </div>
 <!-- /Modal add -->
+
+<script>
+  setTimeout(() => {
+      $('#success').slideUp('fast');
+  }, 1500);
+  </script>
 @endsection

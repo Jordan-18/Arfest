@@ -34,7 +34,11 @@
                 <div class="d-sm-flex align-items-center justify-content-end mb-4">
                     <form action="{{route('user')}}">
                       <div class="input-group mb-3">
-                        <input type="text" class="form-control" name="search" id="search"  placeholder="Search..." value="{{ request('search')}}">
+                        <input type="text" list="datalistOptions" class="form-control" name="search" id="search"  placeholder="Search..." value="{{ request('search')}}" autocomplete="off">
+                        <datalist id="datalistOptions">
+                            <option value="USER">
+                            <option value="ADMIN">
+                        </datalist>
                         <button class="btn btn-outline-primary" type="submit" id="btn-search" >
                           <i class="fas fa-search"></i>
                         </button>

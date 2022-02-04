@@ -34,6 +34,7 @@ Route::get('/', [DashboardController::class, 'index'])->name('index');
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/point', [PointController::class, 'index'])->name('point');
     Route::get('/point/create',[PointController::class, 'create'])->name('create-point');
+    Route::post('/point/create',[PointController::class, 'store'])->name('store-point');
     Route::get('/event', [EventController::class, 'index'])->name('event');
 });
 
@@ -47,9 +48,7 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function (){
     
     // admin event
     Route::get('/events',[AdminEventController::class, 'index'])->name('events');
-    Route::delete('/event/{id}',[AdminEventController::class,'destroy'])->name('destroy-event');
-    Route::get('/event/edit/{id}',[AdminEventController::class, 'edit'])->name('event-edit');
-    Route::put('/edit-event/{id}',[AdminEventController::class, 'update'])->name('event-update');
+    Route::post('/event/{id}',[AdminEventController::class,'action'])->name('event-action');
 });
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');

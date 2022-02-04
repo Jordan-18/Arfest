@@ -13,7 +13,8 @@ class EventController extends Controller
     {
         $events = Event::query();
         if(request('search')){
-            $events->where('name','LIKE','%'.request('search').'%');   
+            $events->where('name','LIKE','%'.request('search').'%')
+                ->orWhere('status','LIKE','%'.request('search').'%');  
         }
         return view('contents.admin.event.index',[
             'events' => $events->orderBy('id', 'DESC')->paginate(5)->onEachSide(1)->withQueryString(),
@@ -54,6 +55,31 @@ class EventController extends Controller
 
         $user->delete();
 
-        return back()->with('deleted','User Berhasil Dihapus');
+        return back()->with('deleted','Event Berhasil Dihapus');
+    }
+
+    public function action(Request $request,$id)
+    {
+        $event = Event::findOrFail($id);
+        switch ($request->input('event-action')){
+            case 'delete':
+                $event->delete();
+                return back()->with('deleted','Event Berhasil Dihapus');
+            case 'reject':
+                $event->update([
+                    'status' => 'REJECT'
+                ]);
+                return back()->with('deleted','Data Ditolak');
+            case 'publish':
+                $event->update([
+                    'status' => 'PUBLISH'
+                ]);
+                return back()->with('success','Data Telah Disetujui');
+            case 'pending':
+                $event->update([
+                    'status' => 'PENDING'
+                ]);
+                return back()->with('deleted','Data Pending');
+        }
     }
 }

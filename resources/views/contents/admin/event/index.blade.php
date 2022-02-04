@@ -37,11 +37,16 @@
             <div class="d-sm-flex align-items-center justify-content-end mb-4">
                 <form action="{{route('events')}}">
                   <div class="input-group mb-3">
-                    <input type="text" class="form-control" name="search" id="search"  placeholder="Search..." value="{{ request('search')}}">
+                    <input class="form-control" list="datalistOptions" type="text" class="form-control" name="search" id="search"  placeholder="Search..." value="{{ request('search')}}" autocomplete="off">
+                    <datalist id="datalistOptions">
+                        <option value="PENDING">
+                        <option value="PUBLISH">
+                        <option value="REJECT">
+                    </datalist>
                     <button class="btn btn-outline-primary" type="submit" id="btn-search" >
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>                                
+                        <i class="fas fa-search"></i>
+                      </button>
+                  </div>
                 </form>
             </div>
         {{-- start Table User --}}
@@ -65,15 +70,28 @@
                     <td>{{ $event->created_at->diffForHumans() }}</td>
                     <td>{{ $event->status }}</td>
                     <td>
-                        <form action="{{route('destroy-event', $event->id)}}" method="POST">
-                            {{ csrf_field() }}
-                            {{ method_field('DELETE') }}
-                            <button href="#" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
-                              <i class="fas fa-trash"></i>
+                        <form action="{{route('event-action', $event->id)}}" method="POST">
+                            @csrf
+                            @if ($event->status == "REJECT")
+                                <button name="event-action" value="delete" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
+                                <i class="fas fa-trash"></i>
+                              </button>
+                            @else
+                            <button name="event-action" value="reject" type="submit" class="btn btn-warning btn-circle">
+                                <i class="fas fa-times"></i>
                             </button>
-                            <a href="{{route('event-edit', $event->id)}}" class="btn btn-secondary btn-circle">
-                                <i class="fas fa-edit"></i>
-                            </a>
+                            @endif
+                            @if ($event->status == "PUBLISH")
+                            {{-- kosongkan --}}
+                            @else
+                            <button name="event-action" value="publish" type="submit" class="btn btn-success btn-circle">
+                                <i class="fas fa-check-double"></i>
+                            </button> 
+                            @endif
+                            <button name="event-action" value="pending" type="submit" class="btn btn-secondary btn-circle">
+                                <i class="fas fa-pause"></i>
+                            </button> 
+                            
                           </form>
                     </td>
                 </tr>
