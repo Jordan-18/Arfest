@@ -11,20 +11,18 @@ class Event extends Model
 
     protected $fillable =
     [
-        'id_user',
-        'id_point',
-        'Nama',
+        'name',
         'url',
-        'desk',
+        'deskripsi',
         'date_execution',
         'status'
     ];
 
-    public function PointCompetition()
+    public function pointevent()
     {
         return $this->hasMany(point::class,'point_id','id');
     }
-    public function UserCompetition()
+    public function userevent()
     {
         return $this->hasMany(User::class,'user_id','id');
     }

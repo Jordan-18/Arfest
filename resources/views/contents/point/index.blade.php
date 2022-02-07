@@ -16,40 +16,45 @@
           {{ session('success') }}
       </div>
       @endif
+
       <div class="row row-cols-1 row-cols-md-4 g-4 m-auto">
         @foreach ($points as $point)
         <div class="col mb-2">
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">{{date("F j, Y",strtotime($point->created_at))}}</h5>
-              <table class="table table-bordered">
-                <tr>
-                  <th>Jenis</th>
-                  <td>{{ $point->jenis_busur }}</td>
-                </tr>
-                <tr>
-                  <th>Jarak</th>
-                  <td>{{ $point->jarak }}</td>
-                </tr>
-                <tr>
-                  <th>Total</th>
-                  <td>{{ $point->total.'/'.($point->jumAP*10)*$point->rambahan }}</td>
-                </tr>
-                <tr>
-                  <th>Presentase</th>
-                  @php
-                      $presentase = ($point->total/( ($point->jumAP*10) *$point->rambahan )) * 100
-                  @endphp
-                  @if ( $presentase >= 75 )
-                    <td style="color: #2bff00">{{ round($presentase,2).'%' }}</td>
-                  @elseif ($presentase > 40)
-                    <td style="color: #ff9800">{{ round($presentase,2).'%' }}</td>
-                  @else
-                    <td style="color: #ff0000">{{ round($presentase,2).'%' }}</td>
-                  @endif
-                </tr>
-              </table>
+              @if (Auth::user()->roles == "ADMIN")
+              <p class="card-text">User  : <strong>{{ $point->userpoint->name }}</strong></p>
+              @endif
+              <p class="card-text">Jenis  : <strong>{{ $point->jenis_busur }}</strong></p>
+              <p class="card-text">Jarak  : <strong>{{ $point->jarak }}</strong></p>
+              <p class="card-text">Total  : <strong>{{ $point->total.'/'.($point->jumAP*10)*$point->rambahan }}</strong></p>
 
+              @php
+                  $presentase = ($point->total/( ($point->jumAP*10) * $point->rambahan )) * 100
+              @endphp
+              @if ( $presentase >= 75 )
+                <p class="card-text">
+                  Presentase  :
+                  <strong style="color: #2bff00">
+                    {{ round($presentase,2).'%' }}
+                  </strong>
+                </p>
+              @elseif ($presentase > 40)
+                <p class="card-text">
+                  Presentase  :
+                  <strong style="color: #ff9800">
+                    {{ round($presentase,2).'%' }}
+                  </strong>
+                </p>
+              @else
+                <p class="card-text">
+                  Presentase  :
+                  <strong style="color: #ff0000">
+                    {{ round($presentase,2).'%' }}
+                  </strong>
+                </p>
+              @endif
               <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <a href="">Detail &raquo;</a>
               </div>
@@ -58,7 +63,8 @@
           </div>
         </div>
         @endforeach
-      </div>      
+      </div>
+            
     </div>
     <div class="d-flex justify-content-center">
       {{ $points->links() }}

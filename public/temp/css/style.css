@@ -33,11 +33,25 @@
     border-radius: 0px 10px 10px 0px;
 }
 
+.mapping {
+    width: 100%;
+    height: 450px;
+    border: 0;
+    transition: 1s;
+}
+
 /* ukuran HP */
 @media screen and (max-width: 500px) {
     .busur {
         height: 150px;
         width: 100px;
+        transition: 1s;
+    }
+
+    .mapping {
+        width: 100%;
+        height: 100%;
+        border: 0;
         transition: 1s;
     }
 }
@@ -48,4 +62,56 @@ th {
 
 td {
     text-align: center;
+}
+
+.drag-area {
+    border: 2px dashed #5256ad;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.drag-area.active {
+    border: 2px solid #5256ad;
+}
+
+.drag-area .icon {
+    font-size: 50px;
+    color: #5256ad;
+}
+
+.drag-area header {
+    font-size: 16px;
+    font-weight: 500;
+    color: #5256ad;
+}
+
+.drag-area span {
+    font-size: 16px;
+    font-weight: 500;
+    color: #5256ad;
+    margin: 10px 0 15px 0;
+}
+
+.drag-area button {
+    padding: 10px 25px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
+    outline: none;
+    background: #5256ad;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.drag-area img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
 }

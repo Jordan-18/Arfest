@@ -101,6 +101,7 @@
     
     <script src="{{url('/temp/js/main.js')}}"></script>
     <script src="{{url('/temp/js/calc-point.js')}}"></script>
+    <script src="{{url('/temp/js/script.js')}}"></script>
 </body>
 
 </html>

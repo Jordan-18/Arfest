@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRelationUserCompetation extends Migration
+class CreateEventsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateRelationUserCompetation extends Migration
      */
     public function up()
     {
-        Schema::create('relation_user_competation', function (Blueprint $table) {
+        Schema::create('events', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('point_id');
+            $table->string('name');
+            $table->string('url');
+            $table->longText('deskripsi');
+            $table->date('date_execution');
+            $table->string('status')->default('PENDING');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateRelationUserCompetation extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('relation_user_competation');
+        Schema::dropIfExists('events');
     }
 }

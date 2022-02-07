@@ -17,10 +17,10 @@ class CreatePointsTable extends Migration
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('jarak');
-            $table->string('jenis_busur')->default('Standard Bow');
-            $table->bigInteger('Rambahan');
-            $table->bigInteger('Jum-AP')->default(12);
-            $table->bigInteger('Total');
+            $table->string('jenis_busur');
+            $table->bigInteger('rambahan');
+            $table->bigInteger('jumAP')->default(12);
+            $table->bigInteger('total');
             $table->timestamps();
         });
     }

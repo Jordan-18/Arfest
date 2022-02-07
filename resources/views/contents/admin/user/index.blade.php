@@ -70,10 +70,10 @@
                             <form action="{{route('destroy-user', $user->id)}}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
-                                <button type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
+                                <button type="submit" title="DELETE" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
                                   <i class="fas fa-trash"></i>
                                 </button>
-                                <a href="{{route('edit-user', $user->id)}}" class="btn btn-secondary btn-circle">
+                                <a href="{{route('edit-user', $user->id)}}" title="EDIT" class="btn btn-secondary btn-circle">
                                   <i class="fas fa-user-edit"></i>
                                 </a>
                               </form>

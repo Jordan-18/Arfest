@@ -8,9 +8,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
-
-use function GuzzleHttp\Promise\queue;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +33,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/point/create',[PointController::class, 'create'])->name('create-point');
     Route::post('/point/create',[PointController::class, 'store'])->name('store-point');
     Route::get('/event', [EventController::class, 'index'])->name('event');
+    Route::get('/create/event',[EventController::class, 'create'])->name('create-event');
+    Route::post('/create/event',[EventController::class, 'store'])->name('store-event');
 });
 
 // hak Admin

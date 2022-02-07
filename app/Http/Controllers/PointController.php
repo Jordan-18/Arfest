@@ -12,9 +12,9 @@ class PointController extends Controller
     public function index()
     {
         if(Auth::user()->roles == "ADMIN"){
-            $points = Point::query();
+            $points = Point::with(['userpoint']);
         }else {
-            $points = Point::query()->where('user_id','=',Auth::user()->id);
+            $points = Point::with(['userpoint'])->where('user_id','=',Auth::user()->id);
         }
 
         return view('contents.point.index',[

@@ -18,4 +18,7 @@ class Point extends Model
         'jumAP',
         'total'
     ];
+    public function userpoint(){
+        return $this->hasOne(User::class,'id','user_id');
+    }
 }

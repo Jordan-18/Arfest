@@ -73,22 +73,22 @@
                         <form action="{{route('event-action', $event->id)}}" method="POST">
                             @csrf
                             @if ($event->status == "REJECT")
-                                <button name="event-action" value="delete" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
+                                <button name="event-action" title="DELETE" value="delete" type="submit" class="btn btn-danger btn-circle" onclick="return confirm('Are you Sure ?')">
                                 <i class="fas fa-trash"></i>
                               </button>
                             @else
-                            <button name="event-action" value="reject" type="submit" class="btn btn-warning btn-circle">
+                            <button name="event-action" title="REJECT" value="reject" type="submit" class="btn btn-warning btn-circle">
                                 <i class="fas fa-times"></i>
                             </button>
                             @endif
                             @if ($event->status == "PUBLISH")
                             {{-- kosongkan --}}
                             @else
-                            <button name="event-action" value="publish" type="submit" class="btn btn-success btn-circle">
+                            <button name="event-action" title="PUBLISH" value="publish" type="submit" class="btn btn-success btn-circle">
                                 <i class="fas fa-check-double"></i>
                             </button> 
                             @endif
-                            <button name="event-action" value="pending" type="submit" class="btn btn-secondary btn-circle">
+                            <button name="event-action" title="PENDING" value="pending" type="submit" class="btn btn-secondary btn-circle">
                                 <i class="fas fa-pause"></i>
                             </button> 
                             
