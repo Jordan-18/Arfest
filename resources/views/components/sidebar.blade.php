@@ -2,7 +2,7 @@
         <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{route('index')}}">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-bullseye"></i>
                 </div>
@@ -18,6 +18,14 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            @guest
+            <!-- Nav Item - Point -->
+            <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('point')}}">
+                    <i class="fas fa-sun"></i>
+                    <span>Point Guest</span></a>
+            </li>
+            @endguest
             @auth
             @if (Auth::user()->roles == 'ADMIN')                
             <!-- Akses Untuk Admin -->
@@ -42,7 +50,6 @@
                     <i class="fas fa-sun"></i>
                     <span>Point</span></a>
             </li>
-
             <!-- Nav Item - Point -->
             <li class="nav-item {{ request()->is('event') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('event')}}">

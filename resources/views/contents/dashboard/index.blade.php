@@ -174,14 +174,13 @@
                 <div id="container"></div>
             </div>
         </div>
-    @endif
-
-    @if (Auth::user()->roles == "USER")
-        {{-- Code Here --}}
+    @else
+        {{-- code here --}}
     @endif
     @endauth
     </div>
 
+{{-- script ADMIN --}}
 <script type="text/javascript">
     var countusers = {{json_encode($countusers)}};
     var countuvents = {{json_encode($countuvents)}};
@@ -343,5 +342,9 @@
             }]
         });
         
+</script>
+
+{{-- script USER --}}
+<script>
 </script>
 @endsection

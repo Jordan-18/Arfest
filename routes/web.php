@@ -6,7 +6,11 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PointController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Event;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +31,17 @@ Route::post('/logout',[LoginController::class, 'logout'])->name('logout');
 // frontend
 Route::get('/', [DashboardController::class, 'index'])->name('index');
 
+Route::get('/point', [PointController::class, 'index'])->name('point');
+Route::get('/point/create',[PointController::class, 'create'])->name('create-point');
+Route::post('/point/create',[PointController::class, 'store'])->name('store-point');
+
 // Dashboard->auth
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
-    Route::get('/point', [PointController::class, 'index'])->name('point');
-    Route::get('/point/create',[PointController::class, 'create'])->name('create-point');
-    Route::post('/point/create',[PointController::class, 'store'])->name('store-point');
     Route::get('/event', [EventController::class, 'index'])->name('event');
     Route::get('/create/event',[EventController::class, 'create'])->name('create-event');
     Route::post('/create/event',[EventController::class, 'store'])->name('store-event');
+
+    Route::get('user/profile/{id}',[DashboardController::class,'profile'])->name('profile-edit');
 });
 
 // hak Admin
@@ -52,3 +59,8 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function (){
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->name('register');
+
+// Page Not Found 404
+Route::fallback(function(){
+    return view('404');
+});

@@ -35,4 +35,12 @@ class DashboardController extends Controller
             'standard'
         ));
     }
+
+    public function profile($id)
+    {
+        $user = User::find($id);
+        return view('contents.profile.edit',[
+            'user' => $user
+        ]);
+    }
 }

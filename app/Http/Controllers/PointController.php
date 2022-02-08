@@ -11,10 +11,14 @@ class PointController extends Controller
 {
     public function index()
     {
-        if(Auth::user()->roles == "ADMIN"){
-            $points = Point::with(['userpoint']);
-        }else {
-            $points = Point::with(['userpoint'])->where('user_id','=',Auth::user()->id);
+        if(Auth::guest()){
+            $points = Point::with(['userpoint'])->where('user_id','=',0);
+        }elseif(Auth::user()){
+            if(Auth::user()->roles == "ADMIN"){
+                $points = Point::with(['userpoint']);
+            }else{
+                $points = Point::with(['userpoint'])->where('user_id','=',Auth::user()->id);
+            }
         }
 
         return view('contents.point.index',[
@@ -39,8 +43,14 @@ class PointController extends Controller
             'jenis' => 'required',
             'form-total' => 'required'
         ]);
+
+        if(Auth::check()){
+            $userid = Auth::user()->id;
+        }else{
+            $userid = 0;
+        }
         Point::create([
-            'user_id' => Auth::user()->id,
+            'user_id' => $userid,
             'rambahan' => $request->input('rambahan'),
             'jumAP' => $request->input('jumlah-ap'),
             'jarak' => $request->input('jarak'),

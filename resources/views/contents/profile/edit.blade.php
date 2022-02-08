@@ -1,12 +1,12 @@
 @extends('layouts.frontend')
 
-@section('title','Events')
+@section('title','Profile Page')
 
 @section('content')
 <div class="container-fluid">
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Buat Event</h1>
+        <h1 class="h3 mb-0 text-gray-800">Profile &raquo; {{$user->name}}</h1>
     </div>
     @if (session()->has('success'))
     <div class="alert alert-success" role="alert" id="popup">
@@ -42,25 +42,33 @@
     <div class="col-xl-8 col-lg-7">
         <div class="card shadow mb-4">
         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-            <h6 class="m-0 font-weight-bold">Event Details</h6>
+            <h6 class="m-0 font-weight-bold">Profile Details</h6>
         </div>
         <div class="card-body">
-            <input type="file" name="file" id="file" hidden>
-            <div class="mb-3">
-                <label for="name" class="form-label">Name Event</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="name Of events" value="{{old('name')}}">
+            <img src="{{ Storage::url($user->url) }}" class="mx-auto d-block" id="profile" name="file">
+            <div class="mb-3" hidden>
+                <label for="name" class="form-label">Upload</label>
+                <input type="file" name="file" id="file" class="form-control">
             </div>
             <div class="mb-3">
-                <label for="date" class="form-label">Date Execution</label>
-                <input type="date" name="date_execution" class="form-control" id="date" value="{{old('date_execution')}}">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="name Of events" value="{{$user->name}}">
             </div>
             <div class="mb-3">
-                <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Acara</label>
-                <textarea class="form-control" name="desk" id="exampleFormControlTextarea1" rows="3" value="{{old('desk')}}"></textarea>
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" value="{{$user->email}}">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password" placeholder="Change Password">
+                <div class="custom-control custom-checkbox mt-3">
+                    <input type="checkbox" class="custom-control-input" id="showpassword" >
+                    <label class="custom-control-label" for="showpassword" onclick="showpassword()">Show password</label>
+                </div>
             </div>
 
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <button class="btn btn-primary" type="submit">Update</button>
             </div>            
         </div>
         </div>

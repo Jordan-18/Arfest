@@ -23,9 +23,11 @@
           <div class="card h-100">
             <div class="card-body">
               <h5 class="card-title">{{date("F j, Y",strtotime($point->created_at))}}</h5>
-              @if (Auth::user()->roles == "ADMIN")
-              <p class="card-text">User  : <strong>{{ $point->userpoint->name }}</strong></p>
-              @endif
+              @auth
+                @if (Auth::user()->roles == "ADMIN")
+                  <p class="card-text">User  : <strong>{{ $point->userpoint->name ?? 'Guest'}}</strong></p>
+                @endif
+              @endauth
               <p class="card-text">Jenis  : <strong>{{ $point->jenis_busur }}</strong></p>
               <p class="card-text">Jarak  : <strong>{{ $point->jarak }}</strong></p>
               <p class="card-text">Total  : <strong>{{ $point->total.'/'.($point->jumAP*10)*$point->rambahan }}</strong></p>

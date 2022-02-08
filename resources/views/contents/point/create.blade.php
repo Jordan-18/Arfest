@@ -35,7 +35,11 @@
                                 <th>Rambahan</th>
                               </tr>
                               <tr>
+                                @if (Auth::check())
                                   <th>{{Auth::user()->name}}</th>
+                                  @else
+                                <th>Guest</th>
+                                @endif
                                   <th>
                                     <a id="jarak-tembak" data-toggle="modal" data-target="#jarak">
                                        &#10010; Add</a>

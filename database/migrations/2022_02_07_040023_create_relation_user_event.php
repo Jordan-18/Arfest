@@ -6,14 +6,9 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateRelationUserEvent extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
-        Schema::create('relation_user_event', function (Blueprint $table) {
+        Schema::create('relation_user_events', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
             $table->bigInteger('point_id');
@@ -22,11 +17,6 @@ class CreateRelationUserEvent extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('relation_user_event');

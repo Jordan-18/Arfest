@@ -40,6 +40,12 @@
     transition: 1s;
 }
 
+#profile {
+    height: 200px;
+    width: 200px;
+    border-radius: 100%;
+}
+
 /* ukuran HP */
 @media screen and (max-width: 500px) {
     .busur {
