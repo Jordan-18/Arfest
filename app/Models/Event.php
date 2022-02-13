@@ -12,18 +12,15 @@ class Event extends Model
     protected $fillable =
     [
         'name',
+        'user_id',
         'url',
         'deskripsi',
         'date_execution',
         'status'
     ];
 
-    public function pointevent()
-    {
-        return $this->hasMany(point::class,'point_id','id');
-    }
     public function userevent()
     {
-        return $this->hasMany(User::class,'user_id','id');
+        return $this->hasOne(User::class,'id','user_id');
     }
 }

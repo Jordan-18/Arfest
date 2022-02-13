@@ -1,11 +1,16 @@
 //function for displaying values
 function dis(val) {
+    var jumAP = document.getElementById('form-jumlah-AP').value;
     var countpoint = document.getElementById('count-point');
+
     document.getElementById("display").value += val
     let x = document.getElementById("display").value
-    countpoint.innerHTML = x.split('+').length
-    let y = eval(x)
-    document.getElementById("result").value = y
+    var count = countpoint.innerHTML = x.split('+').length
+
+    if (count <= jumAP) {
+        let y = eval(x)
+        document.getElementById("result").value = y
+    }
 }
 //function for clearing the display
 function clr() {

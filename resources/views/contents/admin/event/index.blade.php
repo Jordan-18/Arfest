@@ -55,9 +55,10 @@
                 <tr>
                     <th>No</th>
                     <th>Poster</th>
-                    <th>Name</th>
+                    <th>Publisher</th>
+                    <th>Name Event</th>
                     <th>Request Date</th>
-                    <th>Roles</th>
+                    <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -66,6 +67,7 @@
                 <tr>
                     <td>{{  ++$no + ($events->currentPage()-1) * $events->perPage() }}</td>
                     <td><a href="{{ Storage::url($event->url)}}" target="_blank"><img src="{{ Storage::url($event->url)}}" style="height: 70px; width:70px"></a></td>
+                    <td>{{ $event->userevent->name ?? 'Unknown'}}</td>
                     <td>{{ $event->name }}</td>
                     <td>{{ $event->created_at->diffForHumans() }}</td>
                     <td>{{ $event->status }}</td>

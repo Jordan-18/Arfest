@@ -65,27 +65,31 @@
                                 </div>
                             {{-- email --}}
 
-                                {{-- start password --}}
-                                <div class="form-group">
-                                    <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="exampleFirstpassword" placeholder="password" name="password" value="{{('password')}}">
-                                @error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
+                            {{-- start password --}}
+                            <div class="form-group">
+                                <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password">
+                                <div class="custom-control custom-checkbox mt-3">
+                                    <input type="checkbox" class="custom-control-input" id="showpassword" >
+                                    <label class="custom-control-label" for="showpassword" onclick="showpassword()">Show password</label>
                                 </div>
-                                @enderror
-                                </div>
-                                {{-- end password --}}
+                            @error('password')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                            @enderror
+                            </div>
+                            {{-- end password --}}
                                 
-                                <button type="submit" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </button>
-                                <hr>
-                                <a href="index.html" class="btn btn-google btn-user btn-block">
-                                    <i class="fab fa-google fa-fw"></i> Register with Google
-                                </a>
-                                <a href="index.html" class="btn btn-facebook btn-user btn-block">
-                                    <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                </a>
+                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                                Register Account
+                            </button>
+                            <hr>
+                            <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Register with Google
+                            </a>
+                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                            </a>
                         </form>
                             <hr>
                             <div class="text-center">
@@ -102,6 +106,7 @@
 
     </div>
 
+    <script src="{{url('/temp/js/main.js')}}"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="{{url('/temp/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url('/temp/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

@@ -45,8 +45,7 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Welcome Back, {{ auth()->user()->name}}</span>
-                                <img class="img-profile rounded-circle"
-                                    src="{{Storage::url($userprofile->url)}}">
+                                    <img class="img-profile rounded-circle" src="{{ Storage::url($userprofile->url)}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -59,9 +58,9 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="{{route('create-event')}}">
-                                    <i class="fas fa-plus-square fa-fw mr-2 text-warning"></i>
-                                    Add Event
+                                <a class="dropdown-item text-warning" href="">
+                                    <i class="fas fa-comments fa-fw mr-2"></i>
+                                    Request To ADMIN
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

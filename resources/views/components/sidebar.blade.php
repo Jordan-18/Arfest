@@ -18,14 +18,6 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
-            @guest
-            <!-- Nav Item - Point -->
-            <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
-                <a class="nav-link" href="{{route('point')}}">
-                    <i class="fas fa-sun"></i>
-                    <span>Point Guest</span></a>
-            </li>
-            @endguest
             @auth
             @if (Auth::user()->roles == 'ADMIN')                
             <!-- Akses Untuk Admin -->
@@ -43,6 +35,13 @@
                     </div>
                 </div>
             </li>
+            @elseif (Auth::user()->roles == "PUBLISHER")
+            <!-- Nav Item - Point -->
+            <li class="nav-item {{ request()->is('create/event') ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('create-event')}}">
+                    <i class="fas fa-plus-square"></i>
+                    <span>Event Create</span></a>
+            </li>
             @endif                
             <!-- Nav Item - Point -->
             <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
@@ -50,13 +49,22 @@
                     <i class="fas fa-sun"></i>
                     <span>Point</span></a>
             </li>
+            @endauth
+            @guest
+            <!-- Nav Item - Point -->
+            <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
+                <a class="nav-link" href="{{route('point')}}">
+                    <i class="fas fa-sun"></i>
+                    <span>Point Guest</span>
+                </a>
+            </li>
+            @endguest
             <!-- Nav Item - Point -->
             <li class="nav-item {{ request()->is('event') ? 'active' : ''}}">
                 <a class="nav-link" href="{{route('event')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Event</span></a>
+                <span>Event</span></a>
             </li>
-            @endauth
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 

@@ -19,8 +19,9 @@
       Input Kurang
     </div>
     @endif
-<form action="{{route('store-event')}}" method="POST" enctype="multipart/form-data">
+<form action="{{route('profile-update',Auth::user()->id)}}" method="POST" enctype="multipart/form-data">
     @csrf
+    @method('PUT')
     <div class="row">
     <div class="col-xl-4 col-lg-5">
         <div class="card shadow mb-4">
@@ -49,6 +50,7 @@
             <div class="mb-3" hidden>
                 <label for="name" class="form-label">Upload</label>
                 <input type="file" name="file" id="file" class="form-control">
+                <input type="text" name="oldfile" id="oldfile" class="form-control" value="{{$user->url}}">
             </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
@@ -60,16 +62,15 @@
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" name="password" class="form-control" id="password" placeholder="Change Password">
+                <input type="password" name="password" class="form-control" id="password" placeholder="Change Password" autocomplete="off">
                 <div class="custom-control custom-checkbox mt-3">
-                    <input type="checkbox" class="custom-control-input" id="showpassword" >
+                    <input type="checkbox" class="custom-control-input" id="showpassword">
                     <label class="custom-control-label" for="showpassword" onclick="showpassword()">Show password</label>
                 </div>
             </div>
-
             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                 <button class="btn btn-primary" type="submit">Update</button>
-            </div>            
+            </div>
         </div>
         </div>
     </div>

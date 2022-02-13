@@ -57,23 +57,18 @@
                                         @csrf
                                         <div class="form-group">
                                             {{-- email --}}
-                                            <input type="text" name="name" class="form-control form-control-user"
-                                             placeholder="Enter Email Address..." value="{{ old('name')}}">
+                                            <input type="text" name="name" class="form-control form-control-user" placeholder="Enter Username..." value="{{ old('name')}}">
                                             {{-- end email --}}
                                         </div>
                                         {{-- end email --}}
                                         <div class="form-group">
                                             {{-- pass --}}
-                                            <input type="password" name="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
-                                            {{-- end pass --}}
-                                        </div>
-                                        <div class="form-group">
-                                            <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                            <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password" autocomplete="off">
+                                            <div class="custom-control custom-checkbox mt-3">
+                                                <input type="checkbox" class="custom-control-input" id="showpassword">
+                                                <label class="custom-control-label" for="showpassword" onclick="showpassword()">Show password</label>
                                             </div>
+                                            {{-- end pass --}}
                                         </div>
                                         <button type="submit" href="#" class="btn btn-primary btn-user btn-block">
                                             Login
@@ -109,7 +104,7 @@
         </div>
 
     </div>
-
+    <script src="{{url('/temp/js/main.js')}}"></script>
     <!-- Bootstrap core JavaScript-->
     <script src="{{url('/temp/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{url('/temp/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>

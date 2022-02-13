@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -28,10 +29,10 @@ class EventController extends Controller
             'date_execution' => 'required',
             'desk' => 'required'
         ]);
-        // dd($request->input('date_execution'));
-        $fileName = $request->file('file')->store('public/gallery');
+        $fileName = $request->file('file')->store('public/gallery');    
         Event::create([
             'name' => $request->input('name'),
+            'user_id' => Auth::user()->id,
             'url' => $fileName,
             'deskripsi' => $request->input('desk'),
             'date_execution' => $request->input('date_execution'),

@@ -9,9 +9,9 @@ use Illuminate\Http\Request;
 class EventController extends Controller
 {
     // Event Admin
-    public function index(Request $request)
+    public function index()
     {
-        $events = Event::query();
+        $events = Event::with(['userevent']);
         if(request('search')){
             $events->where('name','LIKE','%'.request('search').'%')
                 ->orWhere('status','LIKE','%'.request('search').'%');  

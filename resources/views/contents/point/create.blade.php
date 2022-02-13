@@ -9,6 +9,15 @@
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Create Score</h1>
       </div>
+        <div class="alert alert-success" role="alert" id="error">
+            <strong>Perhatian</strong>
+            <p>Fitur ini dalam tahap Pengembangan</p>
+            <ul>
+              <li>Jika Skor Telah Masuk Ke Dalam Table Poin Tidak Akan Bisa Diubah</li>
+              <ol>Jika Paksa Di tekan akan Mengisi Ke Kolom</ol>
+              <li>Jumlah Input Panah Tidak Dapat Dibatasi Namun Jumlah Point Jika sudah Melebihi Batas Anak Panah Maka Akan Berhenti</li>
+            </ul>
+        </div>
         {{-- alert-errors --}}
         @if ($errors->any())
         <div class="alert alert-danger" role="alert" id="error">
@@ -41,12 +50,12 @@
                                 <th>Guest</th>
                                 @endif
                                   <th>
-                                    <a id="jarak-tembak" data-toggle="modal" data-target="#jarak">
+                                    <a id="jarak-tembak" data-toggle="modal" data-target="#jarak" style="color: #ff9800">
                                        &#10010; Add</a>
                                   </th>
                                   <th id="date">{{($date)}}</th>
                                   <th>
-                                    <a id="jenis-busur" type="submit" data-toggle="modal" data-target="#jenis">
+                                    <a id="jenis-busur" type="submit" data-toggle="modal" data-target="#jenis" style="color: #ff9800">
                                         &#10010; Add</a>
                                   </th>
                                   <th>{{$rambahan}}</th>
@@ -170,7 +179,6 @@
       </div>
   <!-- /Modal add-point-->
 
-
   <!-- Modal add-jarak-->
   <div class="modal fade" id="jarak" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
@@ -215,7 +223,6 @@
       </div>
       </div>
   <!-- /Modal add-jarak-->
-
 
   <!-- Modal add-Jenis-->
   <div class="modal fade" id="jenis" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -285,6 +292,6 @@
   <script>
       setTimeout(() => {
           $('#error').slideUp('fast');
-      }, 2000);
+      }, 4000);
     </script>
 @endsection
