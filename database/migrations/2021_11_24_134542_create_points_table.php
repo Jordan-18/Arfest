@@ -21,6 +21,7 @@ class CreatePointsTable extends Migration
             $table->bigInteger('rambahan');
             $table->bigInteger('jumAP')->default(12);
             $table->bigInteger('total');
+            $table->bigInteger('event_id')->nullable();
             $table->timestamps();
         });
     }

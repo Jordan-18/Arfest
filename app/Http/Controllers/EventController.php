@@ -3,9 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Point;
+use App\Models\Relation_user_event;
 use Illuminate\Auth\Events\Validated;
+use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rules\Exists;
 
 class EventController extends Controller
 {
@@ -40,5 +44,22 @@ class EventController extends Controller
         ]);
 
         return back()->with('success','Penguan akan diproses 1x24 harap bersamar menunggu');
+    }
+
+    public function show($id)
+    {
+        $event = Event::find($id);
+        $joins = Relation_user_event::with(['userjoin'])->where('event_id','=',$id)->orderBy('id', 'DESC')->paginate(20);
+
+        return view('contents.event.detail',compact('event','joins'));
+    }
+
+    public function join($id)
+    {
+        Relation_user_event::create([
+            'user_id' => Auth::user()->id,
+            'event_id' => $id
+        ]);
+        return redirect()->route('event')->with('success','Mari Isi Skor Poinmu');
     }
 }

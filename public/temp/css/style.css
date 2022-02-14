@@ -46,6 +46,16 @@
     border-radius: 100%;
 }
 
+.event {
+    margin-left: 10px;
+}
+
+.participant {
+    background: none;
+    border: none;
+    color: white;
+}
+
 /* ukuran HP */
 @media screen and (max-width: 500px) {
     .busur {

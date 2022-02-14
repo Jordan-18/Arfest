@@ -11,7 +11,7 @@ class CreateRelationUserEvent extends Migration
         Schema::create('relation_user_events', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
-            $table->bigInteger('point_id');
+            $table->bigInteger('point_id')->nullable();
             $table->bigInteger('event_id');
             $table->timestamps();
         });

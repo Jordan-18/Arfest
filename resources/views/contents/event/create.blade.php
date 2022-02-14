@@ -15,9 +15,9 @@
     @endif
     {{-- alert-errors --}}
     @if ($errors->any())
-    <div class="alert alert-danger" role="alert" id="popup">
-      Input Kurang
-    </div>
+        <div class="alert alert-danger" role="alert" id="popup">
+            Input Kurang
+        </div>
     @endif
 <form action="{{route('store-event')}}" method="POST" enctype="multipart/form-data">
     @csrf

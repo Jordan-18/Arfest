@@ -30,7 +30,7 @@ class PointController extends Controller
     {
         $rambahan = $request->input('rambahan');
         $jumlahAP = $request->input('jumlahAP');
-        $date = date('Y-m-d');    
+        $date = date('Y-m-d');
         return view('contents.point.create', compact('date','rambahan','jumlahAP'));
     }
 

@@ -9,6 +9,11 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Perlombaan</h1>
         </div>
+    @if (session()->has('success'))
+        <div class="alert alert-success" role="alert" id="popup">
+            {{ session('success') }}
+        </div>
+    @endif
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($events as $event)     
         <div class="col">
@@ -19,7 +24,7 @@
                         <h5 class="m-0 font-weight-bold text-secondary mt-2 font-italic">{{$event->name}}</h5>
                         <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 300px;" class="card-title mt-3">{{$event->deskripsi}}</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <a href="">Detail &raquo;</a>
+                            <a href="{{route('event-detail',$event->id)}}">Detail &raquo;</a>
                         </div>
                     </div>
                     <div class="card-footer text-muted">
@@ -37,7 +42,7 @@
     <!-- /.container-fluid -->
     <script>
         setTimeout(() => {
-            $('#deleted').slideUp('fast');
+            $('#popup').slideUp('fast');
         }, 1500);
     </script>
 @endsection

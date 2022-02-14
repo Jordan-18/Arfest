@@ -8,6 +8,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PointController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
+use App\Models\Event;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 /*
@@ -43,6 +44,8 @@ Route::get('/event', [EventController::class, 'index'])->name('event');
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
     Route::get('/create/event',[EventController::class, 'create'])->name('create-event');
     Route::post('/create/event',[EventController::class, 'store'])->name('store-event');
+    Route::get('/event/detail/{id}',[EventController::class, 'show'])->name('event-detail');
+    Route::post('/event/store/{id}',[EventController::class, 'join'])->name('event-join');
 
     Route::get('user/profile/{id}',[UserController::class,'profile'])->name('profile-edit');
     Route::put('user-profile/{id}',[UserController::class, 'update'])->name('profile-update');

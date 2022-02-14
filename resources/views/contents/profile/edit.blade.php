@@ -63,6 +63,7 @@
             <div class="mb-3">
                 <label for="password" class="form-label">Password</label>
                 <input type="password" name="password" class="form-control" id="password" placeholder="Change Password" autocomplete="off">
+                <input type="text" name="oldpassword" class="form-control" value="{{$user->password}}" hidden>
                 <div class="custom-control custom-checkbox mt-3">
                     <input type="checkbox" class="custom-control-input" id="showpassword">
                     <label class="custom-control-label" for="showpassword" onclick="showpassword()">Show password</label>

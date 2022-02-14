@@ -34,7 +34,12 @@ class UserController extends Controller
             $profileimg = $request->file('file')->store('public/gallery');
         }
 
-        $password = Hash::make($request->input('password'));
+        if($request->input("password") == null){
+            $password = $request->input("oldpassword");
+        }else{
+            $password = Hash::make($request->input('password'));
+        }
+
         User::where('id', $id)->update([
             'name' => $request->name,
             'password' => $password,
