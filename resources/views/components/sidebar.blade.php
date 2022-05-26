@@ -19,45 +19,58 @@
                     <span>Dashboard</span></a>
             </li>
             @auth
-            @if (Auth::user()->roles == 'ADMIN')                
-            <!-- Akses Untuk Admin -->
-            <li class="nav-item">
-                <a class="nav-link {{ request()->is(['user','events']) ? '' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Admin</span>
-                </a>
-                <div id="collapseTwo" class="collapse {{ request()->is(['user','events']) ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Admin Access:</h6>
-                        <a class="collapse-item {{ request()->is('user') ? 'active' : ''}}" href="{{route('user')}}">Users</a>
-                        <a class="collapse-item {{ request()->is('events') ? 'active' : ''}}" href="{{route('events')}}">Event</a>
+                @if (Auth::user()->roles == 'ADMIN')                
+                    <!-- Akses Untuk Admin -->
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is(['user','events']) ? '' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            <i class="fas fa-fw fa-cog"></i>
+                            <span>Admin</span>
+                        </a>
+                        <div id="collapseOne" class="collapse {{ request()->is(['user','events']) ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                            <div class="bg-white py-2 collapse-inner rounded">
+                                <h6 class="collapse-header">Admin Access:</h6>
+                                <a class="collapse-item {{ request()->is('user') ? 'active' : ''}}" href="{{route('user')}}">
+                                    <i class="fas fa-users"></i> Users
+                                </a>
+                                <a class="collapse-item {{ request()->is('events') ? 'active' : ''}}" href="{{route('events')}}">
+                                    <i class="fas fa-calendar-check"></i> Event
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                @endif
+                @if (Auth::user()->roles == 'PUBLISHER' || Auth::user()->roles == 'ADMIN')
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('create-event') ? '' : 'collapsed'}}" href="#" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Publisher</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse {{ request()->is('create-event') ? 'show' : ''}}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Publisher Access:</h6>
+                            <a class="collapse-item {{ request()->is('create-event') ? 'active' : ''}}" href="{{route('create-event')}}">
+                                <i class="fas fa-plus-square"></i> Create Event
+                            </a>
+                        </div>
                     </div>
-                </div>
-            </li>
-            @elseif (Auth::user()->roles == "PUBLISHER")
-            <!-- Nav Item - Point -->
-            <li class="nav-item {{ request()->is('create/event') ? 'active' : ''}}">
-                <a class="nav-link" href="{{route('create-event')}}">
-                    <i class="fas fa-plus-square"></i>
-                    <span>Event Create</span></a>
-            </li>
-            @endif                
-            <!-- Nav Item - Point -->
-            <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
-                <a class="nav-link" href="{{route('point')}}">
-                    <i class="fas fa-sun"></i>
-                    <span>Point</span></a>
-            </li>
+                </li>
+                @endif
+                <!-- Nav Item - Point -->
+                <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
+                    <a class="nav-link" href="{{route('point')}}">
+                        <i class="fas fa-sun"></i>
+                        <span>Point</span></a>
+                </li>
             @endauth
             @guest
-            <!-- Nav Item - Point -->
-            <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
-                <a class="nav-link" href="{{route('point')}}">
-                    <i class="fas fa-sun"></i>
-                    <span>Point Guest</span>
-                </a>
-            </li>
+                <li class="nav-item {{ request()->is(['point','point/create']) ? 'active' : ''}}">
+                    <a class="nav-link" href="{{route('point')}}">
+                        <i class="fas fa-sun"></i>
+                        <span>Point Guest</span>
+                    </a>
+                </li>
             @endguest
             <!-- Nav Item - Point -->
             <li class="nav-item {{ request()->is('event') ? 'active' : ''}}">

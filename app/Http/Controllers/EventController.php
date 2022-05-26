@@ -60,6 +60,6 @@ class EventController extends Controller
             'user_id' => Auth::user()->id,
             'event_id' => $id
         ]);
-        return redirect()->route('event')->with('success','Mari Isi Skor Poinmu');
+        return back();
     }
 }

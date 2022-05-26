@@ -26,6 +26,7 @@ class UserController extends Controller
         if($request->file('file') == null){
             $profileimg = $data->url;
         }else{
+            
             if($request->input('oldfile') == 'public/img/undraw_profile.svg'){
 
             }else{

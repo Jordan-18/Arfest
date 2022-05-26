@@ -140,14 +140,14 @@
                 </div>
             </div>
         </div>
-    @else
+    @endif
         <!-- File detail Card -->
         <div class="row">
             <div class="col-xl-8 col-lg-7">
                 <div class="card shadow mb-4">
                     <div
                         class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                        <h6 class="m-0 font-weight-bold">Data Equip</h6>
+                        <h6 class="m-0 font-weight-bold">Your Data Equip</h6>
                     </div>
                     <div class="card-body">
                         <div id="userstandard"></div>
@@ -166,7 +166,6 @@
                 </div>
             </div>
         </div>
-    @endif
     @endauth
     </div>
 

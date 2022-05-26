@@ -8,7 +8,6 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Event</h1>
-        <button href="#" class="btn btn-sm btn-success shadow-sm" type="button">&#10010; Add New</button>
     </div>
 
     @if (session()->has('success'))

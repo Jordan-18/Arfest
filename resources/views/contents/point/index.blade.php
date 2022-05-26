@@ -8,8 +8,7 @@
       <!-- Page Heading -->
       <div class="d-sm-flex align-items-center justify-content-between mb-4">
           <h1 class="h3 mb-0 text-gray-800">Your Score</h1>
-          <button href="#" class="btn btn-sm btn-success shadow-sm" type="submit" data-target="#create" data-toggle="modal">
-              &#10010; Add New</button>
+          <button href="#" class="btn btn-sm btn-success shadow-sm" type="submit" data-target="#create" data-toggle="modal">&#10010; Add New</button>
       </div>
       @if (session()->has('success'))
       <div class="alert alert-success" role="alert" id="success">
@@ -71,6 +70,7 @@
     <div class="d-flex justify-content-center">
       {{ $points->links() }}
     </div>
+    
   <!-- Modal add -->
   <div class="modal fade" id="create" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">

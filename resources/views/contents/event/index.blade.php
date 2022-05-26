@@ -9,11 +9,6 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Perlombaan</h1>
         </div>
-    @if (session()->has('success'))
-        <div class="alert alert-success" role="alert" id="popup">
-            {{ session('success') }}
-        </div>
-    @endif
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($events as $event)     
         <div class="col">
@@ -39,10 +34,4 @@
     {{ $events->links() }}
     </div>
     </div>
-    <!-- /.container-fluid -->
-    <script>
-        setTimeout(() => {
-            $('#popup').slideUp('fast');
-        }, 1500);
-    </script>
 @endsection

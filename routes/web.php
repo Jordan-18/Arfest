@@ -21,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/create-symlink', function() {
+Route::get('/storage', function() {
     Artisan::call('storage:link');
     return 'The links have been created.';
 });
@@ -37,18 +37,18 @@ Route::get('/', [DashboardController::class, 'index'])->name('index');
 // point
 Route::get('/point', [PointController::class, 'index'])->name('point');
 Route::get('/point/create',[PointController::class, 'create'])->name('create-point');
-Route::post('/point/create',[PointController::class, 'store'])->name('store-point');
+Route::post('/point',[PointController::class, 'store'])->name('store-point');
 Route::get('/event', [EventController::class, 'index'])->name('event');
 
 // Dashboard->auth
 Route::middleware(['auth:sanctum', 'verified'])->group(function (){
-    Route::get('/create/event',[EventController::class, 'create'])->name('create-event');
-    Route::post('/create/event',[EventController::class, 'store'])->name('store-event');
-    Route::get('/event/detail/{id}',[EventController::class, 'show'])->name('event-detail');
-    Route::post('/event/store/{id}',[EventController::class, 'join'])->name('event-join');
+    Route::get('/create-event',[EventController::class, 'create'])->name('create-event');
+    Route::post('/create-event',[EventController::class, 'store'])->name('store-event');
+    Route::get('/event/{id}',[EventController::class, 'show'])->name('event-detail');
+    Route::post('/event/{id}',[EventController::class, 'join'])->name('event-join');
 
-    Route::get('user/profile/{id}',[UserController::class,'profile'])->name('profile-edit');
-    Route::put('user-profile/{id}',[UserController::class, 'update'])->name('profile-update');
+    Route::get('/profile/{id}',[UserController::class,'profile'])->name('profile-edit');
+    Route::put('/profile/{id}',[UserController::class, 'update'])->name('profile-update');
 });
 
 // hak Admin
@@ -56,12 +56,12 @@ Route::middleware(['auth:sanctum', 'verified','admin'])->group(function (){
     // admin user
     Route::get('/user', [AdminUserController::class, 'index'])->name('user');
     Route::delete('user/{id}',[AdminUserController::class,'destroy'])->name('destroy-user');
-    Route::get('/user/edit/{id}',[AdminUserController::class, 'edit'])->name('edit-user');
-    Route::put('/edit-user/{id}',[AdminUserController::class, 'update'])->name('user-update');
+    Route::get('/user/{id}',[AdminUserController::class, 'edit'])->name('edit-user');
+    Route::put('/user/{id}',[AdminUserController::class, 'update'])->name('user-update');
     
     // admin event
     Route::get('/events',[AdminEventController::class, 'index'])->name('events');
-    Route::post('/event/{id}',[AdminEventController::class,'action'])->name('event-action');
+    Route::post('/events/{id}',[AdminEventController::class,'action'])->name('event-action');
 });
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
