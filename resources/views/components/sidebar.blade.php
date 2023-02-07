@@ -6,7 +6,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-bullseye"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Panahan<sup>🏆</sup></div>
+                <div class="sidebar-brand-text mx-3">Arfest<sup>🏆</sup></div>
             </a>
 
             <!-- Divider -->
